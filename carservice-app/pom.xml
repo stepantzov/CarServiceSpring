@@ -7,6 +7,9 @@
   <version>1.0-SNAPSHOT</version>
   <name>carservice-app</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <junit.version>3.8.1</junit.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

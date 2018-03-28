@@ -1,7 +1,7 @@
-package mycarservice;
+package com.mycarservice;
 
-import mycarservice.components.ComponentPrinter;
-import mycarservice.services.ServicePrinter;
+import com.mycarservice.components.ComponentPrinter;
+import com.mycarservice.services.ServicePrinter;
 
 public class MyCarServiceApp {
     public static void main(String[] args) {

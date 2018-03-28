@@ -1,7 +1,6 @@
-package com.mycarservice;
+package com.mycarservice.components;
 
 import junit.framework.TestCase;
-import mycarservice.components.ComponentPrinter;
 
 public class ComponentPrinterTest extends TestCase {
     public void testComponentPrinter(){

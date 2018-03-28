@@ -1,4 +1,4 @@
-package mycarservice.services;
+package com.mycarservice.services;
 
 public class ServicePrinter {
     public static String printService() {

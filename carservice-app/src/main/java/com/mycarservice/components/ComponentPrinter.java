@@ -1,4 +1,4 @@
-package mycarservice.components;
+package com.mycarservice.components;
 
 public class ComponentPrinter {
     public static String printComponent() {
