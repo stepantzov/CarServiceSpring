@@ -5,6 +5,16 @@ public class CarDto {
     private String carName;
     private String carDescription;
 
+    public CarDto() {
+//TODO why we actually need this default constructor?
+    }
+
+    public CarDto(int carId, String carName, String carDescription) {
+        this.carId = carId;
+        this.carDescription = carDescription;
+        this.carName = carName;
+    }
+
     public int getCarId() {
         return carId;
     }
