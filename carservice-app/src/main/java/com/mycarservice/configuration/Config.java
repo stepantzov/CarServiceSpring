@@ -14,7 +14,7 @@ import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class Config {
     @Bean
     public Docket serviceApi() {
         return new Docket(DocumentationType.SWAGGER_2)

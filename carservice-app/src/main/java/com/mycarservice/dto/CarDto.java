@@ -1,12 +1,13 @@
 package com.mycarservice.dto;
 
+import com.mycarservice.entity.CarEntity;
+
 public class CarDto {
-    private int carId;
-    private String carName;
-    private String carDescription;
+    private static int carId;
+    private static String carName;
+    private static String carDescription;
 
     public CarDto() {
-//TODO why we actually need this default constructor?
     }
 
     public CarDto(int carId, String carName, String carDescription) {
@@ -15,7 +16,7 @@ public class CarDto {
         this.carName = carName;
     }
 
-    public int getCarId() {
+    public static int getCarId() {
         return carId;
     }
 
@@ -23,7 +24,7 @@ public class CarDto {
         this.carId = carId;
     }
 
-    public String getCarDescription() {
+    public static String getCarDescription() {
         return carDescription;
     }
 
@@ -31,11 +32,20 @@ public class CarDto {
         this.carDescription = carDescription;
     }
 
-    public String getCarName() {
+    public static String getCarName() {
         return carName;
     }
 
     public void setCarName(String carName) {
         this.carName = carName;
+    }
+
+    public static CarEntity convertToEntity() {
+        CarEntity carEntity = new CarEntity();
+        carEntity.setCarEntityId(getCarId());
+        carEntity.setCarEntityDescription(getCarDescription());
+        carEntity.setEntityCarName(getCarName());
+
+        return carEntity;
     }
 }
