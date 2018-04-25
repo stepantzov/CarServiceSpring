@@ -1,56 +1,45 @@
 package com.mycarservice.entity;
 
-import com.mycarservice.dto.CarDto;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class CarEntity {
     @Id
-    private int carEntityId;
-    private String carEntityName;
-    private String carEntityDescription;
+    private int carId;
+    private String carName;
+    private String carDescription;
 
     public CarEntity() {
     }
 
-    public CarEntity(int carEntityId, String carEntityName, String carEntityDescription) {
-        this.carEntityId = carEntityId;
-        this.carEntityName = carEntityName;
-        this.carEntityDescription = carEntityDescription;
+    public CarEntity(int carId, String carName, String carDescription) {
+        this.carId = carId;
+        this.carName = carName;
+        this.carDescription = carDescription;
     }
 
-    public int getCarEntityId() {
-        return carEntityId;
+    public int getCarId() {
+        return carId;
     }
 
-    public void setCarEntityId(int carEntityId) {
-        this.carEntityId = carEntityId;
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
-    public String getCarEntityDescription() {
-        return carEntityDescription;
+    public String getCarDescription() {
+        return carDescription;
     }
 
-    public void setCarEntityDescription(String carEntityDescription) {
-        this.carEntityDescription = carEntityDescription;
+    public void setCarDescription(String carDescription) {
+        this.carDescription = carDescription;
     }
 
-    public String getEntityCarName() {
-        return carEntityName;
+    public String getCarName() {
+        return carName;
     }
 
-    public void setEntityCarName(String carEntityName) {
-        this.carEntityName = carEntityName;
-    }
-
-    public CarDto convertToDto() {
-        CarDto carDto = new CarDto();
-        carDto.setCarId(carEntityId);
-        carDto.setCarDescription(carEntityDescription);
-        carDto.setCarName(carEntityName);
-
-        return carDto;
+    public void setCarName(String carEntityName) {
+        this.carName = carEntityName;
     }
 }
