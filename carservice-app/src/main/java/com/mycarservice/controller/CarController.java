@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/car")
 @RestController
 public class CarController {
@@ -32,9 +34,19 @@ public class CarController {
             carService.addCarInstance(carDto);
 
             return new ResponseEntity(HttpStatus.CREATED);
+
         } catch (Exception e) {
 
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getStoredCarData")
+    @ApiOperation(value = "Get List of Car instances from db.")
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Car ."),
+            @ApiResponse(code = 500, message = "Failed to receive car instance from db.")})
+    public List<CarDto> getCarEntityFromDatabase() {
+
+        return carService.getCarDtosFromDatabase();
     }
 }

@@ -1,12 +1,10 @@
 package com.mycarservice;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class MyCarServiceAppTest extends TestCase {
 
-    public MyCarServiceAppTest(String testName) {
+   /* public MyCarServiceAppTest(String testName) {
         super(testName);
     }
 
@@ -16,5 +14,5 @@ public class MyCarServiceAppTest extends TestCase {
 
     public void testApp() {
         assertTrue(true);
-    }
+    }*/
 }

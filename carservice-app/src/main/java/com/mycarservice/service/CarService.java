@@ -21,10 +21,14 @@ public class CarService {
         carRepository.save(carEntity);
     }
 
-    public List<CarEntity> getCarEntitiesFromDatabase() {
-        List<CarEntity> carEntities = new ArrayList<>();
-        carRepository.findAll().forEach(carEntities::add);
-//get elements from List?
-        return carEntities;
+    public List<CarDto> getCarDtosFromDatabase() {
+        List<CarDto> carDtoList = new ArrayList<>();
+        Iterable<CarEntity> carEntities = carRepository.findAll();
+        carEntities.forEach(carEntity -> {
+            CarDto carDto = ConverterUtils.convertToDto(carEntity);
+            carDtoList.add(carDto);
+        });
+
+        return carDtoList;
     }
 }
