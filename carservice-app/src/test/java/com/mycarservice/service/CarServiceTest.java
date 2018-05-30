@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,26 +48,28 @@ public class CarServiceTest {
 
     @Test
     public void testAddCarInstance() {
-        CarService carService = mock(CarService.class);
-        doNothing().when(carService).addCarInstance(isA(CarDto.class));
         CarDtoTestStub carDtoTestStub = new CarDtoTestStub();
         CarDto carDto = carDtoTestStub.setTestCarDto();
+        List<CarDto> carDtoList = new ArrayList<>();
 
+        when(carRepository.save(any(CarEntity.class))).thenReturn(new CarEntity());
         carService.addCarInstance(carDto);
-        verify(carService, times(1)).addCarInstance(carDto);
+
+        verify(carRepository, times(1)).save(any(CarEntity.class));
     }
 
     @Test(expected = Exception.class)
     public void testAddCarInstanceThrowException() {
-        CarService carService = mock(CarService.class);
         CarDtoTestStub carDtoTestStub = new CarDtoTestStub();
         CarDto carDto = carDtoTestStub.setTestCarDto();
-        carService.addCarInstance(carDto);
 
-        doThrow(Exception.class).
-                when(carService).
-                addCarInstance(carDto);
+        when(carRepository.save(any(CarEntity.class))).thenThrow(Exception.class);
 
-        verify(carService, times(1)).addCarInstance(carDto);
+        try {
+            carService.addCarInstance(carDto);
+            Assert.assertTrue(false);
+        } catch (Exception e) {
+            Assert.assertTrue(true);
+        }
     }
 }
