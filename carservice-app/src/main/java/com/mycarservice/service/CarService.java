@@ -19,7 +19,7 @@ public class CarService {
     public void addCarInstance(CarDto carDto) {
         CarEntity carEntity = ConverterUtils.convertDtoToEntity(carDto);
         carRepository.save(carEntity);
-    }
+}
 
     public List<CarDto> getCarDtosFromDatabase() {
         List<CarDto> carDtoList = new ArrayList<>();
