@@ -1,7 +1,7 @@
-package com.mycarservice.controller;
+package com.carservice.controller;
 
-import com.mycarservice.dto.CarDto;
-import com.mycarservice.service.CarService;
+import com.carservice.dto.CarDto;
+import com.carservice.service.CarService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequestMapping("/car")
 @RestController
@@ -45,8 +43,8 @@ public class CarController {
     @ApiOperation(value = "Get List of Car instances from db.")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Car ."),
             @ApiResponse(code = 500, message = "Failed to receive car instance from db.")})
-    public List<CarDto> getCarEntityFromDatabase() {
+    public ResponseEntity getCarEntityFromDatabase() {
 
-        return carService.getCarDtosFromDatabase();
+        return new ResponseEntity(carService.getCarDtosFromDatabase(), HttpStatus.OK);
     }
 }

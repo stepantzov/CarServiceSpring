@@ -1,22 +1,17 @@
-package com.mycarservice.entity;
+package com.carservice.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class CarEntity {
-    @Id
+public class CarDto {
     private int carId;
     private String carName;
     private String carDescription;
 
-    public CarEntity() {
+    public CarDto() {
     }
 
-    public CarEntity(int carId, String carName, String carDescription) {
+    public CarDto(int carId, String carName, String carDescription) {
         this.carId = carId;
-        this.carName = carName;
         this.carDescription = carDescription;
+        this.carName = carName;
     }
 
     public int getCarId() {
@@ -39,7 +34,7 @@ public class CarEntity {
         return carName;
     }
 
-    public void setCarName(String carEntityName) {
-        this.carName = carEntityName;
+    public void setCarName(String carName) {
+        this.carName = carName;
     }
 }

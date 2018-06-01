@@ -1,8 +1,8 @@
-package com.mycarservice.service;
+package com.carservice.service;
 
-import com.mycarservice.dto.CarDto;
-import com.mycarservice.entity.CarEntity;
-import com.mycarservice.repository.CarRepository;
+import com.carservice.dto.CarDto;
+import com.carservice.entity.CarEntity;
+import com.carservice.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utils.ConverterUtils;

@@ -1,7 +1,7 @@
 package utils;
 
-import com.mycarservice.dto.CarDto;
-import com.mycarservice.entity.CarEntity;
+import com.carservice.dto.CarDto;
+import com.carservice.entity.CarEntity;
 
 public class ConverterUtils {
     public static CarEntity convertDtoToEntity(CarDto carDto) {

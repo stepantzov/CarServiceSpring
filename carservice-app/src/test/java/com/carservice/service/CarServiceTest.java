@@ -1,9 +1,9 @@
-package com.mycarservice.service;
+package com.carservice.service;
 
-import com.mycarservice.dto.CarDto;
-import com.mycarservice.dto.CarDtoTestStub;
-import com.mycarservice.entity.CarEntity;
-import com.mycarservice.repository.CarRepository;
+import com.carservice.dto.CarDto;
+import com.carservice.dto.CarDtoTestStub;
+import com.carservice.entity.CarEntity;
+import com.carservice.repository.CarRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,8 +37,7 @@ public class CarServiceTest {
     public void testGetCarDtosFromDatabase() {
         List<CarEntity> cars = new ArrayList<>();
         cars.add(new CarEntity(1, "TestCarName", "TestCarDescription"));
-        Iterable<CarEntity> iterable = cars;
-        Mockito.when(carRepository.findAll()).thenReturn(iterable);
+        Mockito.when(carRepository.findAll()).thenReturn(cars);
 
         List<CarDto> carDtos = carService.getCarDtosFromDatabase();
         Assert.assertEquals(carDtos.size(), 1);
@@ -49,8 +48,7 @@ public class CarServiceTest {
     @Test
     public void testAddCarInstance() {
         CarDtoTestStub carDtoTestStub = new CarDtoTestStub();
-        CarDto carDto = carDtoTestStub.setTestCarDto();
-        List<CarDto> carDtoList = new ArrayList<>();
+        CarDto carDto = carDtoTestStub.getTestCarDto();
 
         when(carRepository.save(any(CarEntity.class))).thenReturn(new CarEntity());
         carService.addCarInstance(carDto);
@@ -58,12 +56,12 @@ public class CarServiceTest {
         verify(carRepository, times(1)).save(any(CarEntity.class));
     }
 
-    @Test(expected = Exception.class)
+    @Test()
     public void testAddCarInstanceThrowException() {
         CarDtoTestStub carDtoTestStub = new CarDtoTestStub();
-        CarDto carDto = carDtoTestStub.setTestCarDto();
+        CarDto carDto = carDtoTestStub.getTestCarDto();
 
-        when(carRepository.save(any(CarEntity.class))).thenThrow(Exception.class);
+        when(carRepository.save(any(CarEntity.class))).thenThrow(RuntimeException.class);
 
         try {
             carService.addCarInstance(carDto);

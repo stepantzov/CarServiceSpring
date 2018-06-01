@@ -1,11 +1,11 @@
-package com.mycarservice;
+package com.carservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyCarServiceApp {
+public class CarServiceApp {
     public static void main(String[] args) {
-        SpringApplication.run(MyCarServiceApp.class, args);
+        SpringApplication.run(CarServiceApp.class, args);
     }
 }

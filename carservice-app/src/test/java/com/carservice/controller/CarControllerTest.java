@@ -1,8 +1,8 @@
-package com.mycarservice.controller;
+package com.carservice.controller;
 
-import com.mycarservice.dto.CarDto;
-import com.mycarservice.dto.CarDtoTestStub;
-import com.mycarservice.service.CarService;
+import com.carservice.dto.CarDto;
+import com.carservice.dto.CarDtoTestStub;
+import com.carservice.service.CarService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,7 +70,7 @@ public class CarControllerTest {
     @Test
     public void testGetCarEntityFromDatabase() throws Exception {
         CarDtoTestStub carDtoTestStub = new CarDtoTestStub();
-        CarDto carDto = carDtoTestStub.setTestCarDto();
+        CarDto carDto = carDtoTestStub.getTestCarDto();
 
         List<CarDto> expectedResult = new ArrayList<>();
         expectedResult.add(carDto);
