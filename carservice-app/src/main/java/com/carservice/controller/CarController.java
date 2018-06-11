@@ -62,7 +62,6 @@ public class CarController {
             } else
                 return new ResponseEntity("Entity not found.", HttpStatus.NOT_FOUND);
 
-
         } catch (Exception e) {
 
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
