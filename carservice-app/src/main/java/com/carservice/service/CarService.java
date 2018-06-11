@@ -38,13 +38,18 @@ public class CarService {
     }
 
     public boolean verifyCarInstancePresent(CarDto carDto) {
-        CarEntity carEntity = ConverterUtils.convertDtoToEntity(carDto);
-        if (carRepository.findById(carEntity.getCarId()).isPresent()) {
-            return true;
-        } else return false;
+
+        return carRepository.findById(carDto.getCarId()).isPresent();
     }
 
     public void deleteCarInstance(int carId) {
         carRepository.deleteById(carId);
+    }
+
+    public CarDto updateCarInstance(CarDto carDto) {
+        CarEntity carEntity = ConverterUtils.convertDtoToEntity(carDto);
+        carRepository.save(carEntity);
+
+        return carDto;
     }
 }

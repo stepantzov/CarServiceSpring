@@ -56,9 +56,9 @@ public class CarController {
     @ResponseBody
     public ResponseEntity updateCarInstance(@RequestBody CarDto carDto) {
         try {
-            if (carService.verifyCarInstancePresent(carDto) == true) {
-                carService.addCarInstance(carDto);
-                return new ResponseEntity(carService.getExactCarDto(carDto.getCarId()), HttpStatus.CREATED);
+            if (carService.verifyCarInstancePresent(carDto)) {
+                return new ResponseEntity(carService.updateCarInstance(carDto), HttpStatus.OK);
+
             } else
                 return new ResponseEntity("Entity not found.", HttpStatus.NOT_FOUND);
 
