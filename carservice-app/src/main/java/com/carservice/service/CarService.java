@@ -9,6 +9,7 @@ import utils.ConverterUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -19,7 +20,7 @@ public class CarService {
     public void addCarInstance(CarDto carDto) {
         CarEntity carEntity = ConverterUtils.convertDtoToEntity(carDto);
         carRepository.save(carEntity);
-}
+    }
 
     public List<CarDto> getCarDtosFromDatabase() {
         List<CarDto> carDtoList = new ArrayList<>();
@@ -30,5 +31,25 @@ public class CarService {
         });
 
         return carDtoList;
+    }
+
+    public Optional<CarEntity> getExactCarDto(int carId) {
+        return carRepository.findById(carId);
+    }
+
+    public boolean verifyCarInstancePresent(CarDto carDto) {
+
+        return carRepository.findById(carDto.getCarId()).isPresent();
+    }
+
+    public void deleteCarInstance(int carId) {
+        carRepository.deleteById(carId);
+    }
+
+    public CarDto updateCarInstance(CarDto carDto) {
+        CarEntity carEntity = ConverterUtils.convertDtoToEntity(carDto);
+        carRepository.save(carEntity);
+
+        return carDto;
     }
 }

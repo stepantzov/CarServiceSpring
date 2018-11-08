@@ -47,4 +47,24 @@ public class CarController {
 
         return new ResponseEntity(carService.getCarDtosFromDatabase(), HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/updateCar")
+    @ApiOperation(value = "Update existing car instance.")
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Car instance updated successfully."),
+            @ApiResponse(code = 500, message = "Failed to update Car instance."),
+            @ApiResponse(code = 404, message = "Car instance with such ID not found.")})
+    @ResponseBody
+    public ResponseEntity updateCarInstance(@RequestBody CarDto carDto) {
+        try {
+            if (carService.verifyCarInstancePresent(carDto)) {
+                return new ResponseEntity(carService.updateCarInstance(carDto), HttpStatus.OK);
+
+            } else
+                return new ResponseEntity("Entity not found.", HttpStatus.NOT_FOUND);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
